@@ -11,6 +11,21 @@ module.exports = app => {
     });
   });
 
+  // Load home page
+  app.get("/home", (req, res) => {
+    db.Example.findAll({}).then(dbExamples => {
+      res.render("home", {
+        examples: dbExamples,
+        // Placeholder values, to be replaced with user inputs
+        user: "user placeholder",
+        lastBench: 200,
+        lastSquat: 305,
+        lastDead: 405,
+        b3Totals: 910
+      });
+    });
+  });
+
   // Load example page and pass in an example by id
   app.get("/example/:id", (req, res) => {
     db.Example.findOne({ where: { id: req.params.id } }).then(dbExample => {
