@@ -1,0 +1,76 @@
+<div id="home">
+    <div class ="container">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="current-user">Logged in as {{ user }}</h4>
+
+                {{!-- Log out button --}}
+                <div id="logout">
+                    <button id="logout-btn" class="btn btn-dark float-right">Log out</button>
+                </div>
+
+                <div class="row">
+                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                </div>
+                {{!-- Buttons to change which chart is displayed --}}
+                <div id="chartOptions">
+                    <button id="b3-btn" class="btn btn-dark">Big Three Totals</button>
+                    <button id="bf-btn" class="btn btn-dark">Body Fat %</button>
+                    <button id="wt-btn" class="btn btn-dark">Body Weight</button>
+                    <button id="stats-btn" class="btn btn-dark float-right" data-toggle="modal" data-target="#statsModal">Update Stats</button>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Stats modal --}}
+        <div class="modal" id="statsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Your Stats</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{!-- Form to obtain user input for updating stats --}}
+                    <form class="clearfix mb-4" action="POST">
+                        <div class="form-group">
+                            <label for="b3">Enter your new combined lift totals:</label>
+                            <input type="text" id="new-totals" class="form-control" aria-describedby="b3-new" placeholder="Total Weight">
+                        </div>
+                        <div class="form-group">
+                            <label for="bf">Enter your new bodyfat Percentage:</label>
+                            <input type="text" id="new-bf" class="form-control" aria-describedby="bf-new" placeholder="Bodyfat %"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="bf">Enter your new weight:</label>
+                            <input type="text" id="new-wt" class="form-control" aria-describedby="wt-new" placeholder="Body weight"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="submit" class="btn btn-primary">Update stats</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class ="card">
+            <div class="card-body">
+                {{!-- Button to log a new workout to the database --}}
+                <button id="log-btn" class="btn btn-dark float-right">Log Workout</button>
+                {{!-- Card that displays last workout --}}
+                <h2 class="card-title">Last Workout</h2>
+                <br>
+                <h4>Bench Press: {{ lastBench }}</h4>
+                <h4>Squat: {{ lastSquat }}</h4>
+                <h4>Bench Press: {{ lastDead }}</h4>
+                <br>
+                <h4>Total Weight Lifted: {{ b3Totals }}</h4>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
