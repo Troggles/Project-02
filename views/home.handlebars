@@ -32,24 +32,23 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{!-- Form to obtain user input for updating stats --}}
                     <form class="clearfix mb-4" action="POST">
                         <div class="form-group">
-                            <label for="b3">Enter your new combined lift totals:</label>
+                            <label for="b3">"Enter your new combined lift totals:</label>
                             <input type="text" id="new-totals" class="form-control" aria-describedby="b3-new" placeholder="Total Weight">
                         </div>
                         <div class="form-group">
-                            <label for="bf">Enter your new bodyfat Percentage:</label>
-                            <input type="text" id="new-bf" class="form-control" aria-describedby="bf-new" placeholder="Bodyfat %"></textarea>
+                            <label for="bf">"Enter your new bodyfat %:</label>
+                            <input type="text" id="new-bf" class="form-control" aria-describedby="bf-new" placeholder="New Bodyfat %">
                         </div>
                         <div class="form-group">
-                            <label for="bf">Enter your new weight:</label>
-                            <input type="text" id="new-wt" class="form-control" aria-describedby="wt-new" placeholder="Body weight"></textarea>
+                            <label for="wt">"Enter your new bodyfat %:</label>
+                            <input type="text" id="new-wt" class="form-control" aria-describedby="wt-new" placeholder="New Body Weight">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="submit" class="btn btn-primary">Update stats</button>
+                    <button id="submit-stats" class="btn btn-primary">Update stats</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -58,17 +57,49 @@
             <div class="card-body">
                 {{!-- Button to log a new workout to the database --}}
                 <button id="log-btn" class="btn btn-dark float-right">Log Workout</button>
+                <i class="fas fa-dumbbell"></i>
+
                 {{!-- Card that displays last workout --}}
                 <h2 class="card-title">Last Workout</h2>
                 <br>
                 <h4>Bench Press: {{ lastBench }}</h4>
                 <h4>Squat: {{ lastSquat }}</h4>
-                <h4>Bench Press: {{ lastDead }}</h4>
+                <h4>Deadlift: {{ lastDead }}</h4>
                 <br>
                 <h4>Total Weight Lifted: {{ b3Totals }}</h4>
             </div>
         </div>
 
+        <div class="modal" id="logModal" role="dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Log a new workout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="clearfix mb-4" action="POST">
+                        <div class="form-group">
+                            <label for="bench">New bench press weight:</label>
+                            <input type="text" id="new-bench" class="form-control" aria-describedby="bench-new" placeholder="Bench weight">
+                        </div>
+                        <div class="form-group">
+                            <label for="bf">New squat weight:</label>
+                            <input type="text" id="new-squat" class="form-control" aria-describedby="squat-new" placeholder="Squat weight">
+                        </div>
+                        <div class ="form-group">
+                            <label for="bf">New deadlift weight:</label>
+                            <input type="text" id="new-dead" class="form-control" aria-describedby="dead-new" placeholder="Deadlift weight">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="submit-workout" class="btn btn-primary">Log workout</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 

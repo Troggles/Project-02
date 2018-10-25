@@ -1,3 +1,14 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+.current-user {
+  text-align: right;
+}
+
+.card {
+  background-color: #4d4d4d;
+  color: #ffcc00;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
