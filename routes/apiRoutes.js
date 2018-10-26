@@ -3,15 +3,15 @@ const db = require("../models");
 module.exports = app => {
   // Get all examples
   app.get("/api/users", (req, res) => {
-    db.myWorkouts_DB.findAll({}).then(dbmyWorkouts_DB => {
-      res.json(dbmyWorkouts_DB);
+    db.myWorkouts_DB.findAll({}).then(myWorkouts_DB => {
+      res.json(myWorkouts_DB);
     });
   });
 
   // Create a new example
   app.post("/api/workouts", (req, res) => {
-    db.myWorkouts_DB.create(req.body).then(dbmyWorkouts_DB => {
-      res.json(dbmyWorkouts_DB);
+    db.myWorkouts_DB.create(req.body).then(myWorkouts_DB => {
+      res.json(myWorkouts_DB);
     });
   });
 
