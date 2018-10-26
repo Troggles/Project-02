@@ -29,3 +29,13 @@ CREATE TABLE workouts (
     FOREIGN KEY (userId)
 		REFERENCES users(id)
 );
+
+CREATE TABLE stats (
+    id INT AUTO_INCREMENT NOT NULL,
+    date_stats DATE,
+    new_weight FLOAT,
+    new_body_fat FLOAT,
+    PRIMARY KEY(id),
+    FOREIGN KEY (userId)
+        REFERENCES users(id)
+);
