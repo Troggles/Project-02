@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = app => {
   // Load login page
-  app.get("/", (req, res) => {
+  app.get("/login", (req, res) => {
     res.render("login");
   });
 

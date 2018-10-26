@@ -7,5 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     current_weight: DataTypes.FLOAT,
     body_fat: DataTypes.FLOAT
   });
+
+  User.associate = (models) => {
+    User.hasMany(models.Workout, {
+      onDelete: "cascade"
+    });
+  };
+  
   return User;
 };

@@ -1,3 +1,22 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+#welcomeTitle {
+  font-size: 3rem;
+  line-height: 12rem;
+}
+
+@media screen and (min-width: 992px) {
+  #welcomeTitle {
+    font-size: 4rem;
+  }
+}
+
+#loginContainer {
+  height: 100vh;
+}
+
+#btnLogin {
+  margin-bottom: 12rem;
+}
