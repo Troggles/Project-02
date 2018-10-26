@@ -1,7 +1,10 @@
 const db = require("../models");
 
 module.exports = app => {
-  // Load index page
+  // Load login page
+  app.get("/", (req, res) => {
+    res.render("login");
+  });
 
   // Load home page
   app.get("/", (req, res) => {
