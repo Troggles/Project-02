@@ -3,10 +3,10 @@ const db = require("../models");
 module.exports = app => {
   // Load index page
   app.get("/", (req, res) => {
-    db.myWorkouts_DB.findAll({}).then(dbmyWorkouts_DB => {
+    db.myWorkouts_DB.findAll({}).then(db.myWorkouts_DB => {
       res.render("index", {
         msg: "Welcome!",
-        examples: dbmyWorkouts_DB
+        examples: db.myWorkouts_DB
       });
     });
   });
