@@ -2,20 +2,11 @@ const db = require("../models");
 
 module.exports = app => {
   // Load index page
-  app.get("/", (req, res) => {
-    db.myWorkouts_DB.findAll({}).then(db.myWorkouts_DB => {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: db.myWorkouts_DB
-      });
-    });
-  });
 
   // Load home page
-  app.get("/home", (req, res) => {
-    db.Example.findAll({}).then(myWorkouts_DB => {
+  app.get("/", (req, res) => {
+    db.myWorkouts_DB.findAll({}).then(WorkoutsDB => {
       res.render("home", {
-        examples: myWorkouts_DB,
         // Placeholder values, to be replaced with user inputs
         user: "user placeholder",
         lastBench: 200,
