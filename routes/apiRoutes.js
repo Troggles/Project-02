@@ -1,18 +1,14 @@
-const db = require("../models");
+const user = require("../models/user");
+const workout = require("../models/workout");
 
 module.exports = app => {
-  // Get all examples
   app.get("/api/users", (req, res) => {
-    db.myWorkouts_DB.findAll({}).then(myWorkouts_DB => {
-      res.json(myWorkouts_DB);
-    });
+    res.json(user);
   });
 
   // Create a new example
   app.post("/api/workouts", (req, res) => {
-    db.myWorkouts_DB.create(req.body).then(myWorkouts_DB => {
-      res.json(myWorkouts_DB);
-    });
+    res.json(workout);
   });
 
   // // Delete an example by id
