@@ -2,38 +2,27 @@ const db = require("../models");
 
 module.exports = app => {
   // Load index page
-  app.get("/", (req, res) => {
-    db.Example.findAll({}).then(dbExamples => {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  });
 
   // Load home page
-  app.get("/home", (req, res) => {
-    db.Example.findAll({}).then(dbExamples => {
-      res.render("home", {
-        examples: dbExamples,
-        // Placeholder values, to be replaced with user inputs
-        user: "user placeholder",
-        lastBench: 200,
-        lastSquat: 305,
-        lastDead: 405,
-        b3Totals: 910
-      });
+  app.get("/", (req, res) => {
+    res.render("home", {
+      // Placeholder values, to be replaced with user inputs
+      user: "user placeholder",
+      lastBench: 200,
+      lastSquat: 305,
+      lastDead: 405,
+      b3Totals: 910
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", (req, res) => {
-    db.Example.findOne({ where: { id: req.params.id } }).then(dbExample => {
-      res.render("example", {
-        example: dbExample
-      });
-    });
-  });
+  // // Load example page and pass in an example by id
+  // app.get("/example/:id", (req, res) => {
+  //   db.Example.findOne({ where: { id: req.params.id } }).then(dbExample => {
+  //     res.render("example", {
+  //       example: dbExample
+  //     });
+  //   });
+  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => {
