@@ -9,6 +9,7 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL,
     current_weight FLOAT,
     body_fat FLOAT,
+    b3_total FLOAT,
     PRIMARY KEY(id)
 );
 
@@ -35,6 +36,7 @@ CREATE TABLE stats (
     date_stats DATE,
     new_weight FLOAT,
     new_body_fat FLOAT,
+    new_b3_total FLOAT,
     PRIMARY KEY(id),
     FOREIGN KEY (userId)
         REFERENCES users(id)
