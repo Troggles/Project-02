@@ -103,23 +103,23 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 // Example Chart Script
 // To be replaced with our charts
 
-window.onload = function () {
+window.onload = () => {
   const chart = new CanvasJS.Chart("chartContainer", {
-    title:{
-      text: "Example Chart"              
+    title: {
+      text: "Example Chart"
     },
-    data: [              
-    {
-      // Change type to "doughnut", "line", "splineArea", etc.
-      type: "line",
-      dataPoints: [
-        { label: "June",  y: 10  },
-        { label: "July", y: 15  },
-        { label: "August", y: 25  },
-        { label: "September",  y: 30  },
-        { label: "October",  y: 28  }
-      ]
-    }
+    data: [
+      {
+        // Change type to "doughnut", "line", "splineArea", etc.
+        type: "line",
+        dataPoints: [
+          { label: "June", y: 10 },
+          { label: "July", y: 15 },
+          { label: "August", y: 25 },
+          { label: "September", y: 30 },
+          { label: "October", y: 28 }
+        ]
+      }
     ]
   });
   chart.render();

@@ -8,11 +8,11 @@ module.exports = (sequelize, DataTypes) => {
     body_fat: DataTypes.FLOAT
   });
 
-  User.associate = (models) => {
+  User.associate = models => {
     User.hasMany(models.Workout, {
       onDelete: "cascade"
     });
   };
-  
+
   return User;
 };
