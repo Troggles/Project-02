@@ -111,6 +111,10 @@ window.onload = function () {
     title: {
       text: "Big Three Lift Totals"
     },
+    axisY: {
+      viewportMinimum: 500,
+      viewportMaximum: 1000
+    },
     data: [
       {
         // Change type to "doughnut", "line", "splineArea", etc.
@@ -129,10 +133,13 @@ window.onload = function () {
 };
 
 function openBFChart() {
-  window.reload();
   const chart = new CanvasJS.Chart("chartContainer", {
     title: {
       text: "Body Fat %"
+    },
+    axisY: {
+      viewportMinimum: 14,
+      viewportMaximum: 21
     },
     data: [
       {
@@ -151,7 +158,71 @@ function openBFChart() {
   chart.render();
 }
 
-$bfbtn.on("click", openBFChart());
+function openWTChart() {
+  const chart = new CanvasJS.Chart("chartContainer", {
+    title: {
+      text: "Body Weight"
+    },
+    axisY: {
+      viewportMinimum: 170,
+      viewportMaximum: 210
+    },
+    data: [
+      {
+        // Change type to "doughnut", "line", "splineArea", etc.
+        type: "line",
+        dataPoints: [
+          { label: "June", y: 180 },
+          { label: "July", y: 185 },
+          { label: "August", y: 185 },
+          { label: "September", y: 190 },
+          { label: "October", y: 200 }
+        ]
+      }
+    ]
+  });
+  chart.render();
+}
+function openB3Chart() {
+  const chart = new CanvasJS.Chart("chartContainer", {
+    title: {
+      text: "Big Three Lift Totals"
+    },
+    axisY: {
+      viewportMinimum: 500,
+      viewportMaximum: 1000
+    },
+    data: [
+      {
+        // Change type to "doughnut", "line", "splineArea", etc.
+        type: "line",
+        dataPoints: [
+          { label: "June", y: 585 },
+          { label: "July", y: 680 },
+          { label: "August", y: 710 },
+          { label: "September", y: 760 },
+          { label: "October", y: 810 }
+        ]
+      }
+    ]
+  });
+  chart.render();
+};
+
+$(document).ready(() => {
+  $bfbtn.on("click", event => {
+    event.preventDefault();
+    $bfbtn.click(openBFChart());
+  });
+  $wtbtn.on("click", event => {
+    event.preventDefault();
+    $wtbtn.click(openWTChart());
+  });
+  $b3btn.on("click", event => {
+    event.preventDefault();
+    $b3btn.click(openB3Chart());
+  });
+});
 
 // const btn= document.getElementById("bf-btn");
 // btn.addEventListener("click", openBFChart);
