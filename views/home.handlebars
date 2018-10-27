@@ -2,16 +2,22 @@
     <div class ="container">
         <div class="card">
             <div class="card-body">
+                <div class="row" id="imgrow">
+                    <img id="logo" src="/img/POWERTRACKR.jpg" width="250" height="250" alt="Logo">
+                    <p id="logotext">POWERTRACKR</p>
+                </div>
                 <h4 class="current-user">Logged in as {{ user }}</h4>
 
                 {{!-- Log out button --}}
                 <div id="logout">
                     <button id="logout-btn" class="btn btn-dark float-right">Log out</button>
                 </div>
-
+                <br>
+                <br>
                 <div class="row">
                     <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                 </div>
+                <br>
                 {{!-- Buttons to change which chart is displayed --}}
                 <div id="chartOptions">
                     <button id="b3-btn" class="btn btn-dark">Big Three Totals</button>

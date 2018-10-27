@@ -3,6 +3,9 @@ const $exampleText = $("#example-text");
 const $exampleDescription = $("#example-description");
 const $submitBtn = $("#submit");
 const $exampleList = $("#example-list");
+const $b3btn = $("#b3-btn");
+const $bfbtn = $("#bf-btn");
+const $wtbtn = $("#wt-btn");
 
 // The API object contains methods for each kind of request we'll make
 const API = {
@@ -105,22 +108,50 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 window.onload = function () {
   const chart = new CanvasJS.Chart("chartContainer", {
-    title:{
-      text: "Example Chart"              
+    title: {
+      text: "Big Three Lift Totals"
     },
-    data: [              
-    {
-      // Change type to "doughnut", "line", "splineArea", etc.
-      type: "line",
-      dataPoints: [
-        { label: "June",  y: 10  },
-        { label: "July", y: 15  },
-        { label: "August", y: 25  },
-        { label: "September",  y: 30  },
-        { label: "October",  y: 28  }
-      ]
-    }
+    data: [
+      {
+        // Change type to "doughnut", "line", "splineArea", etc.
+        type: "line",
+        dataPoints: [
+          { label: "June", y: 585 },
+          { label: "July", y: 680 },
+          { label: "August", y: 710 },
+          { label: "September", y: 760 },
+          { label: "October", y: 810 }
+        ]
+      }
     ]
   });
   chart.render();
 };
+
+function openBFChart() {
+  window.reload();
+  const chart = new CanvasJS.Chart("chartContainer", {
+    title: {
+      text: "Body Fat %"
+    },
+    data: [
+      {
+        // Change type to "doughnut", "line", "splineArea", etc.
+        type: "line",
+        dataPoints: [
+          { label: "June", y: 15 },
+          { label: "July", y: 16 },
+          { label: "August", y: 19 },
+          { label: "September", y: 20 },
+          { label: "October", y: 16 }
+        ]
+      }
+    ]
+  });
+  chart.render();
+}
+
+$bfbtn.on("click", openBFChart());
+
+// const btn= document.getElementById("bf-btn");
+// btn.addEventListener("click", openBFChart);
