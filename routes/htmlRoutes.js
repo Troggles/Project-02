@@ -1,4 +1,4 @@
-const db = require("../models");
+// const db = require("../db");
 
 module.exports = app => {
   // Load index page
@@ -7,7 +7,7 @@ module.exports = app => {
   app.get("/", (req, res) => {
     res.render("home", {
       // Placeholder values, to be replaced with user inputs
-      user: "user placeholder",
+      user: "Jeff",
       lastBench: 200,
       lastSquat: 305,
       lastDead: 405,
