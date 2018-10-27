@@ -23,41 +23,43 @@
         </div>
 
         {{!-- Stats modal --}}
-        <div class="modal" id="statsModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Update Your Stats</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{!-- Form to obtain user input for updating stats --}}
-                    <form class="clearfix mb-4" action="POST">
-                        <div class="form-group">
-                            <label for="b3">Enter your new combined lift totals:</label>
-                            <input type="text" id="new-totals" class="form-control" aria-describedby="b3-new" placeholder="Total Weight">
-                        </div>
-                        <div class="form-group">
-                            <label for="bf">Enter your new bodyfat Percentage:</label>
-                            <input type="text" id="new-bf" class="form-control" aria-describedby="bf-new" placeholder="Bodyfat %"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="bf">Enter your new weight:</label>
-                            <input type="text" id="new-wt" class="form-control" aria-describedby="wt-new" placeholder="Body weight"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="submit" class="btn btn-primary">Update stats</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="modal fade" id="statsModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Your Stats</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{!-- Form to obtain user input for updating stats --}}
+                        <form class="clearfix mb-4" action="POST">
+                            <div class="form-group">
+                                <label for="b3">Enter your new combined lift totals:</label>
+                                <input type="text" id="new-totals" class="form-control" aria-describedby="b3-new" placeholder="Total Weight">
+                            </div>
+                            <div class="form-group">
+                                <label for="bf">Enter your new bodyfat Percentage:</label>
+                                <input type="text" id="new-bf" class="form-control" aria-describedby="bf-new" placeholder="Bodyfat %">
+                            </div>
+                            <div class="form-group">
+                                <label for="bf">Enter your new weight:</label>
+                                <input type="text" id="new-wt" class="form-control" aria-describedby="wt-new" placeholder="Body weight">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="submit" class="btn btn-primary">Update stats</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class ="card">
             <div class="card-body">
                 {{!-- Button to log a new workout to the database --}}
-                <button id="log-btn" class="btn btn-dark float-right">Log Workout</button>
+                <button id="log-btn" class="btn btn-dark float-right" data-toggle="modal" data-target="#logModal">Log Workout</button>
                 {{!-- Card that displays last workout --}}
                 <h2 class="card-title">Last Workout</h2>
                 <br>
@@ -66,6 +68,39 @@
                 <h4>Bench Press: {{ lastDead }}</h4>
                 <br>
                 <h4>Total Weight Lifted: {{ b3Totals }}</h4>
+            </div>
+        </div>
+
+        <div class="modal fade" id="logModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Enter your last workout totals:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="clearfix mb-4" action="POST">
+                                <div class="form-group">
+                                    <label for="b3">Bench Press Weight:</label>
+                                    <input type="text" id="newBench" class="form-control" aria-describedby="bench">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bf">Squat Weight:</label>
+                                    <input type="text" id="newSquat" class="form-control" aria-describedby="squat">
+                                </div>
+                                <div class="form-group">
+                                    <label for="bf">Deadlift Weight:</label>
+                                    <input type="text" id="newDead" class="form-control" aria-describedby="dead">
+                                </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="submit-stats" class="btn btn-primary">Submit Workout</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
 

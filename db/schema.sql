@@ -9,6 +9,7 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL,
     current_weight FLOAT,
     body_fat FLOAT,
+    b3_total FLOAT,
     PRIMARY KEY(id)
 );
 
@@ -28,4 +29,16 @@ CREATE TABLE workouts (
     PRIMARY KEY(id),
     FOREIGN KEY (userId)
 		REFERENCES users(id)
+);
+
+CREATE TABLE stats (
+    id INT AUTO_INCREMENT NOT NULL,
+    date_stats DATE,
+    new_weight FLOAT,
+    new_body_fat FLOAT,
+    new_b3_total FLOAT,
+    userId INT NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY (userId)
+        REFERENCES users(id)
 );
