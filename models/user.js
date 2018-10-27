@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     current_weight: DataTypes.FLOAT,
     body_fat: DataTypes.FLOAT
+  }, {
+    timestamps: false
   });
   return User;
 };
