@@ -4,10 +4,14 @@ module.exports = (sequelize, DataTypes) => {
     new_weight: DataTypes.FLOAT,
     new_body_fat: DataTypes.FLOAT,
     new_b3_total: DataTypes.INTEGER,
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      references: {
+        model: "Users",
+        key: "id"
+      }
     }
   });
+
   return Stats;
 };

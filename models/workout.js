@@ -10,10 +10,14 @@ module.exports = (sequelize, DataTypes) => {
     deadlift_sets: DataTypes.INTEGER,
     deadlift_reps: DataTypes.INTEGER,
     deadlift_max_weight: DataTypes.INTEGER,
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      references: {
+        model: "Users",
+        key: "id"
+      }
     }
   });
+
   return Workout;
 };
