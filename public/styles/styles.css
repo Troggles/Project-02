@@ -2,12 +2,31 @@
   line-height: 2.5;
 }
 
+#welcomeTitle {
+  font-size: 3rem;
+  line-height: 12rem;
+}
+
+@media screen and (min-width: 992px) {
+  #welcomeTitle {
+    font-size: 4rem;
+  }
+}
+
+#loginContainer {
+  height: 100vh;
+}
+
+#btnLogin {
+  margin-bottom: 12rem;
+}
+
 .current-user {
   text-align: right;
 }
 
 .card {
-  background-color:#858282;
+  background-color: #4d4d4d;
   color: #ffcc00;
   font-family: 'Josefin Sans', sans-serif;
 }
@@ -18,10 +37,5 @@
 }
 
 .modal-content {
-  background-color:#858282
-}
-
-#logotext {
-  text-align: left;
-  font-size: 80px;
+  background-color: #4d4d4d;
 }

@@ -3,9 +3,6 @@ const $exampleText = $("#example-text");
 const $exampleDescription = $("#example-description");
 const $submitBtn = $("#submit");
 const $exampleList = $("#example-list");
-const $b3btn = $("#b3-btn");
-const $bfbtn = $("#bf-btn");
-const $wtbtn = $("#wt-btn");
 
 // The API object contains methods for each kind of request we'll make
 const API = {
@@ -106,123 +103,24 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 // Example Chart Script
 // To be replaced with our charts
 
-window.onload = function () {
+window.onload = () => {
   const chart = new CanvasJS.Chart("chartContainer", {
     title: {
-      text: "Big Three Lift Totals"
-    },
-    axisY: {
-      viewportMinimum: 500,
-      viewportMaximum: 1000
+      text: "Example Chart"
     },
     data: [
       {
         // Change type to "doughnut", "line", "splineArea", etc.
         type: "line",
         dataPoints: [
-          { label: "June", y: 585 },
-          { label: "July", y: 680 },
-          { label: "August", y: 710 },
-          { label: "September", y: 760 },
-          { label: "October", y: 810 }
+          { label: "June", y: 10 },
+          { label: "July", y: 15 },
+          { label: "August", y: 25 },
+          { label: "September", y: 30 },
+          { label: "October", y: 28 }
         ]
       }
     ]
   });
   chart.render();
 };
-
-function openBFChart() {
-  const chart = new CanvasJS.Chart("chartContainer", {
-    title: {
-      text: "Body Fat %"
-    },
-    axisY: {
-      viewportMinimum: 14,
-      viewportMaximum: 21
-    },
-    data: [
-      {
-        // Change type to "doughnut", "line", "splineArea", etc.
-        type: "line",
-        dataPoints: [
-          { label: "June", y: 15 },
-          { label: "July", y: 16 },
-          { label: "August", y: 19 },
-          { label: "September", y: 20 },
-          { label: "October", y: 16 }
-        ]
-      }
-    ]
-  });
-  chart.render();
-}
-
-function openWTChart() {
-  const chart = new CanvasJS.Chart("chartContainer", {
-    title: {
-      text: "Body Weight"
-    },
-    axisY: {
-      viewportMinimum: 170,
-      viewportMaximum: 210
-    },
-    data: [
-      {
-        // Change type to "doughnut", "line", "splineArea", etc.
-        type: "line",
-        dataPoints: [
-          { label: "June", y: 180 },
-          { label: "July", y: 185 },
-          { label: "August", y: 185 },
-          { label: "September", y: 190 },
-          { label: "October", y: 200 }
-        ]
-      }
-    ]
-  });
-  chart.render();
-}
-function openB3Chart() {
-  const chart = new CanvasJS.Chart("chartContainer", {
-    title: {
-      text: "Big Three Lift Totals"
-    },
-    axisY: {
-      viewportMinimum: 500,
-      viewportMaximum: 1000
-    },
-    data: [
-      {
-        // Change type to "doughnut", "line", "splineArea", etc.
-        type: "line",
-        dataPoints: [
-          { label: "June", y: 585 },
-          { label: "July", y: 680 },
-          { label: "August", y: 710 },
-          { label: "September", y: 760 },
-          { label: "October", y: 810 }
-        ]
-      }
-    ]
-  });
-  chart.render();
-};
-
-$(document).ready(() => {
-  $bfbtn.on("click", event => {
-    event.preventDefault();
-    $bfbtn.click(openBFChart());
-  });
-  $wtbtn.on("click", event => {
-    event.preventDefault();
-    $wtbtn.click(openWTChart());
-  });
-  $b3btn.on("click", event => {
-    event.preventDefault();
-    $b3btn.click(openB3Chart());
-  });
-});
-
-// const btn= document.getElementById("bf-btn");
-// btn.addEventListener("click", openBFChart);
