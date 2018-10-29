@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   const Workout = sequelize.define("Workout", {
-    date_logged: DataTypes.DATE,
     bench_sets: DataTypes.INTEGER,
     bench_reps: DataTypes.INTEGER,
     bench_max_weight: DataTypes.INTEGER,
@@ -9,15 +8,12 @@ module.exports = (sequelize, DataTypes) => {
     squat_max_weight: DataTypes.INTEGER,
     deadlift_sets: DataTypes.INTEGER,
     deadlift_reps: DataTypes.INTEGER,
-    deadlift_max_weight: DataTypes.INTEGER,
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Users",
-        key: "id"
-      }
-    }
+    deadlift_max_weight: DataTypes.INTEGER
   });
+
+  Workout.associate = models => {
+    Workout.belongsTo(models.User);
+  };
 
   return Workout;
 };

@@ -1,46 +1,94 @@
 const db = require("../models");
+const { LocalStorage } = require('node-localstorage').LocalStorage;
 
 module.exports = app => {
-  // Load login page
+  // Login page
   app.get("/", (req, res) => {
-    res.render("login");
+    const localStorage = new LocalStorage("/scratch");
+
+    const { saveUser } = req.query.saveUser === "true";
+    const savedUser =
+      localStorage.getItem("savedUser") || sessionStorage.getItem("savedUser");
+
+    if (savedUser) {
+      // fetch user data from db
+      db.User.findOne({
+        where: {
+          id: savedUser
+        }
+      }).then(user => {
+        if (user) {
+          if (saveUser) {
+            // save to localStorage
+            localStorage.setItem("savedUser", user.id);
+          } else {
+            // save to sessionStorage
+            sessionStorage.setItem("savedUser", user.id);
+          }
+
+          res.render("home", {
+            user
+          });
+        } else {
+          // username not found
+          console.log(`Error: could not find user with id '${savedUser}'`);
+
+          // remove non-existent username from localStorage and sessionStorage
+          localStorage.removeItem("savedUser");
+          sessionStorage.removeItem("savedUser");
+
+          // render login page
+          res.render("login");
+        }
+      });
+    } else {
+      // render login page
+      res.render("login");
+    }
   });
-
-  // // Load home page
-  // app.get("/", (req, res) => {
-  //   res.render("home", {
-  //     // Placeholder values, to be replaced with user inputs
-  //     user: "user placeholder",
-  //     lastBench: 200,
-  //     lastSquat: 305,
-  //     lastDead: 405,
-  //     b3Totals: 910
-  //   });
-  // });
-
-  app.get("/:username", (req, res) => {
-    db.User.findOrCreate({ where: { username: req.params.username } }).spread(
-      (user, created) => {
-        if (created) console.log(`Created new user ${user.username}`);
-
-        res.render("home", {
-          user
-        });
-      }
-    );
-  });
-
-  // // Load example page and pass in an example by id
-  // app.get("/example/:id", (req, res) => {
-  //   db.Example.findOne({ where: { id: req.params.id } }).then(dbExample => {
-  //     res.render("example", {
-  //       example: dbExample
-  //     });
-  //   });
-  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => {
     res.render("404");
   });
 };
+
+// const { saveUser } = req.query.saveUser === "true";
+// const savedUser =
+//   localStorage.getItem("savedUser") || sessionStorage.getItem("savedUser");
+
+// if (savedUser) {
+//   // fetch user data from db
+//   db.User.findOne({
+//     where: {
+//       id: savedUser
+//     }
+//   }).then(user => {
+//     if (user) {
+//       if (saveUser) {
+//         // save to localStorage
+//         localStorage.setItem("savedUser", user.id);
+//       } else {
+//         // save to sessionStorage
+//         sessionStorage.setItem("savedUser", user.id);
+//       }
+
+//       res.render("home", {
+//         user
+//       });
+//     } else {
+//       // username not found
+//       console.log(`Error: could not find user with id '${savedUser}'`);
+
+//       // remove non-existent username from localStorage and sessionStorage
+//       localStorage.removeItem("savedUser");
+//       sessionStorage.removeItem("savedUser");
+
+//       // render login page
+//       res.render("login");
+//     }
+//   });
+// } else {
+//   // render login page
+//   res.render("login");
+// }
