@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
-    user_id: {
-      primaryKey: true,
+    id: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     current_weight: DataTypes.FLOAT,
     body_fat: DataTypes.FLOAT,

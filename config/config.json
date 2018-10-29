@@ -4,7 +4,10 @@
     "password": null,
     "database": "myWorkouts_DB",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "define": {
+      "underscored": "true"
+    }
   },
   "test": {
     "username": "root",

@@ -2,15 +2,14 @@ $(document).ready(() => {
   $(".login-form").on("submit", event => {
     event.preventDefault();
 
-    const user = {
-      username: $(this)
-        .children("#inputUsername")
-        .val()
-    };
+    const saveUser = $("#saveUser").prop("checked");
+    const username = $("#inputUsername").val();
+
+    console.log(username);
 
     $.ajax({
       method: "GET",
-      url: `/${user.username}`
+      url: `/?saveUser=${saveUser.toString()}`
     });
   });
 });
