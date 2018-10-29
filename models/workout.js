@@ -11,11 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     deadlift_reps: DataTypes.INTEGER,
     deadlift_max_weight: DataTypes.INTEGER,
     user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Users",
-        key: "id"
-      }
+      type: DataTypes.STRING
     }
   });
 
